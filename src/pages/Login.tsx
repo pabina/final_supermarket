@@ -8,30 +8,58 @@ import axios, { Axios } from 'axios';
 
 const Login = () => {
     const navigate=useNavigate();
+	interface myface{
+		email:any,
+		password:any
+	}
 
 	const url:any="https://uat.ordering-boafresh.ekbana.net/api/v4/auth/login";
 	
-	const [data,setData]=useState<any>({
+	const [data,setData]=useState<myface>({
 		email:"",
         password:"",
 	})
 
 // const client_id=process.env.client_id;
 // console.log(client_id);
-
+ 
+// function submit(e:React.FormEvent<EventTarget>){
+// 		e.preventDefault();
+//        axios.post(url, {
+// 		client_id:"2",
+// 		client_secret:"olzBb6we0po4B0PSJyDpNGhhSsnvZmeio8sRoASa",
+// 		grant_type:"password", 
+// 	  username:data.email,
+// 	  password:data.password
+//   }).then((res)=>{
+// 	  console.log(res.data);
+//   })
+// }
+ const client_id:number=2;
+ const client_secret:string="olzBb6we0po4B0PSJyDpNGhhSsnvZmeio8sRoASa";
+ const grant_type:any="password";
+ 
 function submit(e:React.FormEvent<EventTarget>){
 		e.preventDefault();
-       axios.post(url, {
-		client_id:2,
-		client_secret:"olzBb6we0po4B0PSJyDpNGhhSsnvZmeio8sRoASa",
-		grant_type:"password", 
-	  username:data.email,
-	  password:data.password
-	 
-	 
-  }).then((res)=>{
-	  console.log(res.data);
-  })
+let result=fetch(url,{
+    method: 'post',
+    mode:'no-cors',
+    // headers:{
+    //     'Accept':"application.json",
+    //     'Content-type':"application.json",
+		
+		
+    // },
+   body:JSON.stringify({
+	client_id:client_id,
+	client_secret:client_secret,
+	grant_type:grant_type,
+	username:data.email,
+	password:data.password
+   })
+  }).then((rep)=>{
+	  console.log(rep);
+  });
 }
 
 	function handle(e:any){
