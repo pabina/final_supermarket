@@ -4,7 +4,7 @@ import BreadcrumbComponent from "../components/BreadcrumbComponent";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import NewNavbar from "../components/NewNavbar";
-import DisplayProductByMe from "../components/ProductByMe/DisplayProductByMe";
+
 import ProductDisplay from "../components/products/ProductDisplay";
 
 const ShopNow = () => {
