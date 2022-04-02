@@ -1,0 +1,11 @@
+.adSlider .carousel .carousel-item {
+    height: 350px;
+  }
+  
+  .adSlider .carousel-item img {
+    position: absolute;
+    object-fit: cover;
+    top: 0;
+    left: 0;
+    min-height: 350px;
+  }

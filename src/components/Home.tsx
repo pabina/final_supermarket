@@ -1,27 +1,30 @@
-
-import React from 'react';
-import Navigation from './Navigation';
-import Slider from './Slider';
-import Brands from './Brands';
-import Carasole from './Carasole';
-import BannerButtom from './BannerButtom';
-import BrandStore from './BrandStore';
-import NewOffer from './NewOffer';
-import {BrowserRouter as Router,Routes,Route,Link} from "react-router-dom";
-
+import React from "react";
+import Navigation from "./Navigation";
+import Slider from "./Slider";
+import Brands from "./Brands";
+import Carasole from "./Carasole";
+import BannerButtom from "./BannerButtom";
+import BrandStore from "./BrandStore";
+import NewOffer from "./NewOffer";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import MainSlider from "./myslider/MainSlider";
+import NextSlider from "./myslider/NextSlider";
+import NewNavbar from "./NewNavbar";
+import MainNavbar from "./MyNavBar/MainNavbar";
 
 const Home = () => {
   return (
     <>
-     <Navigation/>
-      <Slider/>
-     <Brands/>
-     <Carasole/>
-    <BannerButtom/>
-    <BrandStore/>
-    <NewOffer/>
+      {/* <NewNavbar/> */}
+      <MainNavbar />
+      <MainSlider />
+      <Brands />
+      <NextSlider />
+      <BannerButtom />
+      <BrandStore />
+      <NewOffer />
     </>
-  )
-}
+  );
+};
 
 export default Home;
