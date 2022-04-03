@@ -2,82 +2,54 @@ import React, { useState } from "react";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import Navigation from "../components/Navigation";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios, { Axios } from "axios";
 import NewNavbar from "../components/NewNavbar";
 import BreadcrumbComponent from "../components/BreadcrumbComponent";
 
-const client_id = 2;
-const client_secret = "olzBb6we0po4B0PSJyDpNGhhSsnvZmeio8sRoASa";
-const grant_type = "password";
-
 const Login = () => {
   const navigate = useNavigate();
-
-  interface myface {
-    email: any;
-    password: any;
-  }
-
-  const url: any = "https://uat.ordering-boafresh.ekbana.net/api/v4/auth/login";
-
-  const [data, setData] = useState<myface>({
-    email: "",
-    password: "",
-  });
-
-  // const client_id=process.env.client_id;
-  // console.log(client_id);
-
-  // function submit(e:React.FormEvent<EventTarget>){
-  // 		e.preventDefault();
-  //        axios.post(url, {
-  // 		client_id:"2",
-  // 		client_secret:"olzBb6we0po4B0PSJyDpNGhhSsnvZmeio8sRoASa",
-  // 		grant_type:"password",
-  // 	  username:data.email,
-  // 	  password:data.password
-  //   }).then((res)=>{
-  // 	  console.log(res.data);
-  //   })
-  // }
-  //  const client_id:number=2;
-  //  const client_secret:string="olzBb6we0po4B0PSJyDpNGhhSsnvZmeio8sRoASa";
-  //  const grant_type:any="password";
-
-  function submit(e: React.FormEvent<EventTarget>) {
+  const handleLogin = async (e: any) => {
     e.preventDefault();
-    let result = fetch(url, {
-      method: "post",
-      mode: "no-cors",
-      headers: {
-        // 'Accept':"application.json",
-        "Content-type": "application.json",
-      },
-      body: JSON.stringify({
-        client_id: client_id,
-        client_secret: client_secret,
-        grant_type: grant_type,
-        username: data.email,
-        password: data.password,
-      }),
-    }).then((rep) => {
-      console.log(rep);
-    });
-  }
+    // const formData = new FormData(e);
+    const loginData = {
+      grant_type: process.env.REACT_APP_GRANT_TYPE,
+      email: e.target.email.value,
+      username: e.target.email.value,
+      client_id: process.env.REACT_APP_CLIENT_ID,
+      client_secret: process.env.REACT_APP_CLIENTSECRET,
+      password: e.target.password.value,
+    };
+    // console.log(loginData);
 
-  function handle(e: any) {
-    const newdata: any = { ...data };
-    newdata[e.target.id] = e.target.value;
-    setData(newdata);
-    console.log(newdata);
-  }
+    fetch("https://uat.ordering-dalle.ekbana.net/api/v4/auth/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(loginData),
+    })
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        if (data.expires_in) {
+          alert("You are logged in successfully.");
+        } else {
+          alert("Login failed!");
+        }
+        localStorage.setItem("access_token", data.access_token);
+        localStorage.setItem("warehouse_id", data.warehouse_id);
+      });
+  };
 
   return (
     <div>
       <Header />
       <NewNavbar />
       <BreadcrumbComponent page="login" />
+
+      {/* </>login */}
       <div className="login">
         <div className="container">
           <h2>Login Form</h2>
@@ -86,54 +58,37 @@ const Login = () => {
             className="login-form-grids animated wow slideInUp"
             data-wow-delay=".5s"
           >
-            <form
-              onSubmit={(e: React.FormEvent<EventTarget>) => {
-                submit(e);
-              }}
-            >
+            <form onSubmit={handleLogin}>
               <input
                 type="email"
-                placeholder="Email Address"
-                onChange={(e: React.FormEvent<EventTarget>) => handle(e)}
                 id="email"
-                value={data.email}
+                name="email"
+                placeholder="Email Address"
                 required
               />
               <input
                 type="password"
-                placeholder="Password"
-                onChange={(e: React.FormEvent<EventTarget>) => handle(e)}
                 id="password"
-                value={data.password}
+                name="password"
+                placeholder="Password"
                 required
               />
               <div className="forgot">
-                <a href="#">Forgot Password?</a>
+                <Link to="/forgotpassword">Forgot Password?</Link>
               </div>
               <input type="submit" value="Login" />
             </form>
           </div>
           <h4>For New People</h4>
           <p>
-            <a
-              onClick={() => {
-                navigate("/createAccount");
-              }}
-            >
-              Register Here
-            </a>{" "}
-            (Or) go back to{" "}
-            <a
-              onClick={() => {
-                navigate("/");
-              }}
-            >
+            <Link to="/register">Register Here</Link> (Or) go back to{" "}
+            <Link to="/">
               Home
               <span
                 className="glyphicon glyphicon-menu-right"
                 aria-hidden="true"
               ></span>
-            </a>
+            </Link>
           </p>
         </div>
       </div>
