@@ -2,7 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Navbar, Nav, NavDropdown, Container } from "react-bootstrap";
-import { Root as CategoriesInterface } from "../products/ProductDisplayInterface";
+import { MyRoot as CategoriesInterface } from "../products/ProductDisplayInterface";
 
 import axios from "axios";
 

@@ -1,5 +1,5 @@
 import React from "react";
-import { Root as ProductDisplayInterface } from "../products/ProductDisplayInterface";
+import { MyRoot as ProductDisplayInterface } from "../products/ProductDisplayInterface";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import OfferCard from "./OfferCard";

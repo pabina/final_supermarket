@@ -1,8 +1,5 @@
 import React from "react";
-import Navigation from "./Navigation";
-import Slider from "./Slider";
-import Brands from "./Brands";
-import Carasole from "./Carasole";
+
 import BannerButtom from "./BannerButtom";
 import BrandStore from "./BrandStore";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
@@ -11,6 +8,8 @@ import NextSlider from "./myslider/NextSlider";
 import NewNavbar from "./NewNavbar";
 import MainNavbar from "./MyNavBar/MainNavbar";
 import NewOffer from "./NewOffer/NewOffer";
+// import AdvertiseOffer from "./TopOffer/AdvertiseOffer";
+// import Brands from "./TopOffer/Brands";
 
 const Home = () => {
   return (
@@ -18,7 +17,7 @@ const Home = () => {
       {/* <NewNavbar/> */}
       <MainNavbar />
       <MainSlider />
-      <Brands />
+      {/* <Brands /> */}
       <NextSlider />
       <BannerButtom />
       <BrandStore />

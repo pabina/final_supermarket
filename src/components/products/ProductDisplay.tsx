@@ -16,9 +16,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 
-import { Root as ProductDisplayInterface } from "./ProductDisplayInterface";
+import { MyRoot as ProductDisplayInterface } from "./ProductDisplayInterface";
 // import { Daum2, Root as CategoriesInterface } from "./CategoriesInterface";
-import { Daum2, Root as CategoriesInterface } from "./CategoriesInterface";
+import { Daum2, MyRoot as CategoriesInterface } from "./CategoriesInterface";
 
 const baseURL = "https://uat.ordering-dalle.ekbana.net/";
 const apiKey = "q0eq7VRCxJBEW6n1EJkHy4qNLgaS86ztm8DYhGMqerV1eldXa6";
@@ -122,7 +122,7 @@ function ProductDisplay(): JSX.Element {
               </div>
               <Row>
                 {products &&
-                  products.data.map((product) => (
+                  products.data.map((product: any) => (
                     <ProductCard
                       offer={product.unitPrice[0].hasOffer}
                       image={product.categoryBackgroundImage}
@@ -131,12 +131,13 @@ function ProductDisplay(): JSX.Element {
                       markedPrice={product.unitPrice[0].markedPrice}
                     />
                   ))}
-                {products && <Pagination data={products} />}
+                {/* <Pagination /> */}
               </Row>
               <div className="clearfix"> </div>
             </Col>
             <div className="clearfix"> </div>
           </Row>
+          <Pagination />
         </Container>
         <div className="clearfix"> </div>
       </div>
