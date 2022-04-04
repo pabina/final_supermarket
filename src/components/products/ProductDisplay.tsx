@@ -1,12 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import {
-  Container,
-  Col,
-  Row,
-  Form,
-  Pagination as BPagination,
-} from "react-bootstrap";
+import { Container, Col, Row, Form } from "react-bootstrap";
 
 import Pagination from "../Pagination";
 
@@ -17,8 +11,9 @@ import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 
 import { MyRoot as ProductDisplayInterface } from "./ProductDisplayInterface";
-// import { Daum2, Root as CategoriesInterface } from "./CategoriesInterface";
+
 import { Daum2, MyRoot as CategoriesInterface } from "./CategoriesInterface";
+import Sort from "./Sort";
 
 const baseURL = "https://uat.ordering-dalle.ekbana.net/";
 const apiKey = "q0eq7VRCxJBEW6n1EJkHy4qNLgaS86ztm8DYhGMqerV1eldXa6";
@@ -52,7 +47,7 @@ function ProductDisplay(): JSX.Element {
     };
     getProducts();
   }, []);
-
+  console.log(products);
   return (
     <>
       <div className="products">
@@ -101,7 +96,7 @@ function ProductDisplay(): JSX.Element {
             <Col md={8} className="products-right">
               <div className="products-right-grid">
                 <div className="products-right-grids">
-                  <div className="sorting">
+                  {/* <div className="sorting">
                     <Form.Select className="frm-field required sect">
                       <option value="null">Default sorting</option>
                       <option value="null">Sort by popularity</option>
@@ -117,7 +112,8 @@ function ProductDisplay(): JSX.Element {
                       <option value="null">All</option>
                     </Form.Select>
                   </div>
-                  <div className="clearfix"> </div>
+                  <div className="clearfix"> </div> */}
+                  <Sort />
                 </div>
               </div>
               <Row>
