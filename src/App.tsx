@@ -8,6 +8,7 @@ import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Contact from "./pages/Contact";
 import MyAbout from "./pages/MyAbout";
 import ForgotPassword from "./pages/ForgetPassword";
+import SingleProduct from "./pages/SingleProduct";
 
 const App: React.FC = () => {
   return (
@@ -21,6 +22,7 @@ const App: React.FC = () => {
           <Route path="/forgotpassword" element={<ForgotPassword />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/about" element={<MyAbout />} />
+          <Route path="/shopnow/:id" element={<SingleProduct />} />
         </Routes>
       </Router>
     </div>

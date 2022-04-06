@@ -160,6 +160,7 @@ function ProductDisplay(): JSX.Element {
                 {products &&
                   products.data.map((product: any) => (
                     <ProductCard
+                      id={product.id}
                       offer={product.unitPrice[0].hasOffer}
                       image={product.categoryBackgroundImage}
                       title={product.title}

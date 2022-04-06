@@ -49,16 +49,7 @@ const NewOffer: React.FC = () => {
                     markedPrice={myfilterdata.unitPrice[0].markedPrice}
                   />
                 ))}
-            {/* {products &&
-              products.data.map((product: any) => (
-                <OfferCard
-                  offer={product.unitPrice[0].hasOffer}
-                  image={product.categoryBackgroundImage}
-                  title={product.title}
-                  sellPrice={product.unitPrice[0].sellingPrice}
-                  markedPrice={product.unitPrice[0].markedPrice}
-                />
-              ))} */}
+
             <div className="clearfix"> </div>
           </div>
         </div>
