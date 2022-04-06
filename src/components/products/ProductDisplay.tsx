@@ -1,19 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Container, Col, Row, Form } from "react-bootstrap";
-
-import Pagination from "../Pagination";
-
+import ShopNow from "../../pages/ShopNow";
 import ProductCard from "./ProductCard";
-
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
-
 import { MyRoot as ProductDisplayInterface } from "./ProductDisplayInterface";
-
 import { Daum2, MyRoot as CategoriesInterface } from "./CategoriesInterface";
 import Sort from "./Sort";
+import ReactPaginate from "react-paginate";
 
 const baseURL = "https://uat.ordering-dalle.ekbana.net/";
 const apiKey = "q0eq7VRCxJBEW6n1EJkHy4qNLgaS86ztm8DYhGMqerV1eldXa6";
@@ -21,23 +17,29 @@ const warehouseId = 1;
 
 function ProductDisplay(): JSX.Element {
   const [products, setProducts] = useState<ProductDisplayInterface>();
-
   const [categories, setCategories] = useState<CategoriesInterface>();
-
-  console.log(categories);
+  const [sort, setsort] = useState<any>();
+  const [items, setItems] = useState<any>(1);
 
   useEffect(() => {
     const getProducts = async () => {
       try {
         const config = {
-          headers: { "Api-Key": apiKey, "Warehouse-Id": warehouseId },
+          headers: {
+            "Api-Key": apiKey,
+            "Warehouse-Id": warehouseId,
+            perpage: 6,
+          },
         };
 
-        let response = await axios.get(`${baseURL}/api/v4/product`, config);
-
+        // let response = await axios.get(`${baseURL}/api/v4/product`, config);
+        let response = await axios.get(
+          `${baseURL}/api/v4/product?page=${items}`,
+          config
+        );
         let response2 = await axios.get(`${baseURL}/api/v4/category`, config);
 
-        if (response.status == 200) {
+        if (response2.status == 200) {
           setProducts(response.data);
           setCategories(response2.data);
         }
@@ -46,8 +48,45 @@ function ProductDisplay(): JSX.Element {
       }
     };
     getProducts();
-  }, []);
-  console.log(products);
+  }, [items]);
+
+  // useEffect(() => {
+  //   const getdata = async () => {
+  //     try {
+  //       const config = {
+  //         headers: {
+  //           "Api-Key": apiKey,
+  //           "Warehouse-Id": warehouseId,
+  //           perpage: 9,
+  //         },
+  //       };
+  //       let response = await axios.get(
+  //         `${baseURL}/api/v4/product?page=${items}`,
+  //         config
+  //       );
+  //       if (response.status == 200) {
+  //         // setItems(response.data);
+  //         setProducts(response.data);
+  //       }
+  //     } catch (e) {
+  //       console.log("Something went wrong!: ", e);
+  //     }
+  //   };
+  //   getdata();
+  // }, [items]);
+  // console.log(items);
+
+  function handlesort(e: any) {
+    e.preventDefault();
+    console.log(e.target.value);
+  }
+
+  const handlePageClick = (data: any = 1) => {
+    const mypage = data.selected + 1;
+    setItems(mypage);
+    console.log(data.selected);
+  };
+
   return (
     <>
       <div className="products">
@@ -113,7 +152,8 @@ function ProductDisplay(): JSX.Element {
                     </Form.Select>
                   </div>
                   <div className="clearfix"> </div> */}
-                  <Sort />
+                  {/* <Sort handlesort={handlesort} /> */}
+                  <Sort handlesort={handlesort} />
                 </div>
               </div>
               <Row>
@@ -127,13 +167,31 @@ function ProductDisplay(): JSX.Element {
                       markedPrice={product.unitPrice[0].markedPrice}
                     />
                   ))}
-                {/* <Pagination /> */}
               </Row>
               <div className="clearfix"> </div>
             </Col>
             <div className="clearfix"> </div>
           </Row>
-          <Pagination />
+          {products && (
+            <ReactPaginate
+              previousLabel={"<<"}
+              pageCount={7}
+              breakLabel={"..."}
+              marginPagesDisplayed={4}
+              nextLabel={">>"}
+              onPageChange={handlePageClick}
+              containerClassName={"pagination justify-content-center"}
+              pageClassName={"page-item"}
+              pageLinkClassName={"page-link"}
+              previousClassName={"page-item"}
+              previousLinkClassName={"page-link"}
+              nextClassName={"page-item"}
+              nextLinkClassName={"page-link"}
+              breakClassName={"page-item"}
+              breakLinkClassName={"page-link"}
+              activeClassName={"active"}
+            />
+          )}
         </Container>
         <div className="clearfix"> </div>
       </div>
