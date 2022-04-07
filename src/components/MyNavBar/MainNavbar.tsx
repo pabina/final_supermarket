@@ -44,7 +44,7 @@ const MainNavbar = () => {
               <Link className="nav-link" to="/">
                 HOME
               </Link>
-              <Link className="nav-link" to="/products">
+              <Link className="nav-link" to="/shopNow">
                 ALL PRODUCTS
               </Link>
 

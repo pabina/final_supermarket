@@ -3,7 +3,7 @@ import { Breadcrumb, Pagination } from "react-bootstrap";
 import BreadcrumbComponent from "../components/BreadcrumbComponent";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
-import NewNavbar from "../components/NewNavbar";
+import MainNavbar from "../components/MyNavBar/MainNavbar";
 
 import ProductDisplay from "../components/products/ProductDisplay";
 
@@ -11,7 +11,7 @@ const ShopNow = () => {
   return (
     <>
       <Header />
-      <NewNavbar />
+      <MainNavbar />
       <BreadcrumbComponent page="products" />
       <ProductDisplay />
       <Pagination />

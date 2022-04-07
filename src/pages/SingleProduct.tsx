@@ -9,6 +9,7 @@ import Header from "../components/Header";
 import NewNavbar from "../components/NewNavbar";
 import BreadcrumbComponent from "../components/BreadcrumbComponent";
 import Footer from "../components/Footer";
+import MainNavbar from "../components/MyNavBar/MainNavbar";
 
 const baseURL = "https://uat.ordering-dalle.ekbana.net/";
 const apiKey = "q0eq7VRCxJBEW6n1EJkHy4qNLgaS86ztm8DYhGMqerV1eldXa6";
@@ -44,7 +45,7 @@ const SingleProduct = () => {
   return (
     <>
       <Header />
-      <NewNavbar />
+      <MainNavbar />
       <BreadcrumbComponent page="single one" />
       {/* <h1>hello pabina</h1>
       <h3>{products.data.id}</h3>

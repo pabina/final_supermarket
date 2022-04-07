@@ -7,6 +7,7 @@ import axios, { Axios } from "axios";
 import { Register } from "../Model";
 import NewNavbar from "../components/NewNavbar";
 import BreadcrumbComponent from "../components/BreadcrumbComponent";
+import MainNavbar from "../components/MyNavBar/MainNavbar";
 
 const CreateAccount = () => {
   const navigate = useNavigate();
@@ -61,7 +62,7 @@ const CreateAccount = () => {
   return (
     <div>
       <Header />
-      <NewNavbar />
+      <MainNavbar />
       <BreadcrumbComponent page="registration" />
       <div className="register">
         <div className="container">
