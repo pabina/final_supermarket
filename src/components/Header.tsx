@@ -9,7 +9,7 @@ const Header = () => {
           <div className="w3l_offers">
             <p>
               SALE UP TO 70% OFF. USE CODE "SALE70%" .{" "}
-              <Link to="/shopnow">ShopNow</Link>
+              <Link to="/shopNow">ShopNow</Link>
             </p>
           </div>
           <div className="agile-login">

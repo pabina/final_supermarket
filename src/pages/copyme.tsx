@@ -3,43 +3,38 @@ import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import ProductCard from "../components/products/ProductCard";
+import { MyRoot as ProductDisplayInterface } from "../components/products/ProductDisplayInterface";
+import { title } from "process";
 import Header from "../components/Header";
-import MainNavbar from "../components/MyNavBar/MainNavbar";
+
 import BreadcrumbComponent from "../components/BreadcrumbComponent";
 import Footer from "../components/Footer";
+import MainNavbar from "../components/MyNavBar/MainNavbar";
 
-import { Meta, Daum } from "../components/products/ProductDisplayInterface";
 const baseURL = "https://uat.ordering-dalle.ekbana.net/";
 const apiKey = "q0eq7VRCxJBEW6n1EJkHy4qNLgaS86ztm8DYhGMqerV1eldXa6";
 const warehouseId = 1;
 
-type ProductDisplayInterface = {
-  meta: Meta;
-  data: Daum;
-};
-
 const SingleProduct = () => {
-  const { id } = useParams();
-  if (id) {
-    var myid = id.toString();
-    console.log(myid);
-  }
+  let { id } = useParams();
+  console.log(id);
 
-  const [products, setProducts] = useState<ProductDisplayInterface>();
+  const [products, setProducts] = useState<any>([]);
   useEffect(() => {
     const getProducts = async () => {
       try {
         const config = {
-          headers: { "Api-Key": apiKey, "Warehouse-Id": warehouseId },
+          headers: { "Api-key": apiKey, "Warehouse-Id": warehouseId },
         };
 
         let response = await axios.get(
-          `${baseURL}/api/v4/product/${myid}`,
+          `${baseURL}/api/v4/product/${id}`,
           config
         );
 
         if (response.status == 200) {
           setProducts(response.data);
+          console.log(response);
         }
       } catch (e) {
         console.log("Something went wrong!: ", e);
@@ -47,7 +42,8 @@ const SingleProduct = () => {
     };
     getProducts();
   }, []);
-  console.log(products);
+
+  console.log(products.data);
   return (
     <>
       <Header />
@@ -60,13 +56,13 @@ const SingleProduct = () => {
             <div className="col-md-4 agileinfo_single_left">
               <img
                 id="example"
-                src={products && products.data.categoryBackgroundImage}
+                src={products.data.categoryBackgroundImage}
                 alt=" "
                 className="img-responsive"
               />
             </div>
             <div className="col-md-8 agileinfo_single_right">
-              <h2>{products && products.data.categoryTitle}</h2>
+              <h2>{products.data.categoryTitle}</h2>
               <div className="rating1">
                 <span className="starRating">
                   <label>
@@ -105,10 +101,8 @@ const SingleProduct = () => {
               <div className="snipcart-item block">
                 <div className="snipcart-thumb agileinfo_single_right_snipcart">
                   <h4 className="m-sing">
-                    {products && products.data.unitPrice[0].newPrice}
-                    <span>
-                      {products && products.data.unitPrice[0].oldPrice}
-                    </span>
+                    {products.data.unitPrice[0].newPrice}
+                    <span>{products.data.unitPrice[0].oldPrice}</span>
                   </h4>
                 </div>
                 <div className="snipcart-details agileinfo_single_right_details">
