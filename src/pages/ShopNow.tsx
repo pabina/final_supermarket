@@ -1,5 +1,5 @@
 import React from "react";
-import { Breadcrumb, Pagination } from "react-bootstrap";
+import { Pagination } from "react-bootstrap";
 import BreadcrumbComponent from "../components/BreadcrumbComponent";
 import Footer from "../components/Footer";
 import Header from "../components/Header";

@@ -1,7 +1,4 @@
 import React from "react";
-function SearchHandler(e: any) {
-  console.log(e.target.value);
-}
 
 const Search = () => {
   return (
@@ -12,9 +9,6 @@ const Search = () => {
             type="search"
             name="Search"
             placeholder="Search for a Product..."
-            onChange={(e: any) => {
-              SearchHandler;
-            }}
           />
           <button
             type="submit"
