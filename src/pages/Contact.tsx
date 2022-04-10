@@ -3,7 +3,6 @@ import BreadcrumbComponent from "../components/BreadcrumbComponent";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import MainNavbar from "../components/MyNavBar/MainNavbar";
-import NewNavbar from "../components/NewNavbar";
 
 const Contact = () => {
   return (

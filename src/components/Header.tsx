@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Search from "./Search";
 
 const Header = () => {
   return (
@@ -58,25 +59,25 @@ const Header = () => {
               <Link to="/">super Market</Link>
             </h1>
           </div>
-          <div className="w3l_search">
+          {/* <div className="w3l_search">
             <form action="#" method="post">
               <input
                 type="search"
                 name="Search"
                 placeholder="Search for a Product..."
+                onChange={()=>{SearchHandler(e.target.value)}}
               />
               <button
                 type="submit"
                 className="btn btn-default search"
                 aria-label="Left Align"
               >
-                <i className="fa fa-search" aria-hidden="true">
-                  {" "}
-                </i>
+                <i className="fa fa-search" aria-hidden="true"></i>
               </button>
               <div className="clearfix"></div>
             </form>
-          </div>
+          </div> */}
+          <Search />
 
           <div className="clearfix"> </div>
         </div>

@@ -1,5 +1,6 @@
 import React from "react";
-import { MyRoot as ProductDisplayInterface } from "../products/ProductDisplayInterface";
+
+import { MyRoot } from "../Interface/ProductInterface";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import OfferCard from "./OfferCard";
@@ -9,7 +10,7 @@ const apiKey = "q0eq7VRCxJBEW6n1EJkHy4qNLgaS86ztm8DYhGMqerV1eldXa6";
 const warehouseId = 1;
 
 const NewOffer: React.FC = () => {
-  const [products, setProducts] = useState<ProductDisplayInterface>();
+  const [products, setProducts] = useState<MyRoot>();
   useEffect(() => {
     const getProducts = async () => {
       try {

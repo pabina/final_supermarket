@@ -7,8 +7,9 @@ import Header from "../components/Header";
 import MainNavbar from "../components/MyNavBar/MainNavbar";
 import BreadcrumbComponent from "../components/BreadcrumbComponent";
 import Footer from "../components/Footer";
+import { Meta, Daum } from "../components/Interface/ProductInterface";
 
-import { Meta, Daum } from "../components/products/ProductDisplayInterface";
+// import { Meta, Daum } from "../components/products/ProductDisplayInterface";
 const baseURL = "https://uat.ordering-dalle.ekbana.net/";
 const apiKey = "q0eq7VRCxJBEW6n1EJkHy4qNLgaS86ztm8DYhGMqerV1eldXa6";
 const warehouseId = 1;

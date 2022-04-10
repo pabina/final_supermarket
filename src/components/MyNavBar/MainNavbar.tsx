@@ -2,8 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Navbar, Nav, NavDropdown, Container } from "react-bootstrap";
-import { MyRoot as CategoriesInterface } from "../products/ProductDisplayInterface";
-
+import { MyRoot } from "../Interface/ProductInterface";
 import axios from "axios";
 
 const baseURL = "https://uat.ordering-dalle.ekbana.net/";
@@ -11,7 +10,7 @@ const apiKey = "q0eq7VRCxJBEW6n1EJkHy4qNLgaS86ztm8DYhGMqerV1eldXa6";
 const warehouseId = 1;
 
 const MainNavbar = () => {
-  const [categories, setCategories] = useState<CategoriesInterface>();
+  const [categories, setCategories] = useState<MyRoot>();
   console.log(categories);
   useEffect(() => {
     const getCategory = async () => {
@@ -51,7 +50,12 @@ const MainNavbar = () => {
               {categories &&
                 categories.data.map((category: any) => {
                   return category.subcategories ? (
-                    <NavDropdown title={category.title}>
+                    <NavDropdown
+                      title={
+                        category.title.charAt(0).toUpperCase() +
+                        category.title.slice(1).toLowerCase()
+                      }
+                    >
                       <ul className="multi-column-dropdown">
                         <h6>{category.title}</h6>
                         {category.subcategories.data.map((sub: any) => (
@@ -65,7 +69,7 @@ const MainNavbar = () => {
                       className="nav-link"
                       to={"/" + category.title.toLowerCase()}
                     >
-                      {category.title}{" "}
+                      {category.title}
                     </Link>
                   );
                 })}
@@ -79,5 +83,4 @@ const MainNavbar = () => {
     </div>
   );
 };
-
 export default MainNavbar;

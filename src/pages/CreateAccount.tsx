@@ -5,7 +5,6 @@ import Footer from "../components/Footer";
 
 import axios, { Axios } from "axios";
 import { Register } from "../Model";
-import NewNavbar from "../components/NewNavbar";
 import BreadcrumbComponent from "../components/BreadcrumbComponent";
 import MainNavbar from "../components/MyNavBar/MainNavbar";
 
@@ -33,24 +32,6 @@ const CreateAccount = () => {
       .then((res) => {
         // console.log(res.data);
       });
-
-    //  let result=fetch(url,{
-    //     method: 'post',
-    //     mode:'no-cors',
-    //     headers:{
-    //         'Accept':"application.json",
-    //         'Content-type':"application.json"
-    //     },
-    //    body:JSON.stringify({
-
-    //     last_name:data.lName,
-    //     email:data.email,
-    //     password:data.password,
-    //     mobile_number:data.MobileNumber,
-    //     first_name:data.fName,
-
-    //    })
-    //   });
   }
 
   function handle(e: any) {

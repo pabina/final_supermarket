@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Categories from "./Category/Categories";
 
 const Footer: React.FC = () => {
   return (
@@ -55,41 +56,19 @@ const Footer: React.FC = () => {
                 </li>
                 <li>
                   <i className="fa fa-arrow-right" aria-hidden="true"></i>
-                  <a href="products.html">Special Products</a>
+                  <Link to="/shopNow">Special Products</Link>
                 </li>
               </ul>
             </div>
             <div className="col-md-3 w3_footer_grid">
-              <h3>Category</h3>
-              <ul className="info">
-                <li>
-                  <i className="fa fa-arrow-right" aria-hidden="true"></i>
-                  <a href="groceries.html">Groceries</a>
-                </li>
-                <li>
-                  <i className="fa fa-arrow-right" aria-hidden="true"></i>
-                  <a href="household.html">Household</a>
-                </li>
-                <li>
-                  <i className="fa fa-arrow-right" aria-hidden="true"></i>
-                  <a href="personalcare.html">Personal Care</a>
-                </li>
-                <li>
-                  <i className="fa fa-arrow-right" aria-hidden="true"></i>
-                  <a href="packagedfoods.html">Packaged Foods</a>
-                </li>
-                <li>
-                  <i className="fa fa-arrow-right" aria-hidden="true"></i>
-                  <a href="beverages.html">Beverages</a>
-                </li>
-              </ul>
+              <Categories />
             </div>
             <div className="col-md-3 w3_footer_grid">
               <h3>Profile</h3>
               <ul className="info">
                 <li>
                   <i className="fa fa-arrow-right" aria-hidden="true"></i>
-                  <a href="products.html">Store</a>
+                  <Link to="/shopNow">Store</Link>
                 </li>
                 <li>
                   <i className="fa fa-arrow-right" aria-hidden="true"></i>
@@ -97,11 +76,11 @@ const Footer: React.FC = () => {
                 </li>
                 <li>
                   <i className="fa fa-arrow-right" aria-hidden="true"></i>
-                  <a href="login.html">Login</a>
+                  <Link to="/login">Login</Link>
                 </li>
                 <li>
                   <i className="fa fa-arrow-right" aria-hidden="true"></i>
-                  <a href="registered.html">Create Account</a>
+                  <Link to="/createAccount">Create Account</Link>
                 </li>
               </ul>
             </div>
