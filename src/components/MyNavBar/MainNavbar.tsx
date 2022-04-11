@@ -5,7 +5,7 @@ import { Navbar, Nav, NavDropdown, Container } from "react-bootstrap";
 import { MyRoot } from "../Interface/ProductInterface";
 import axios from "axios";
 
-const baseURL = "https://uat.ordering-dalle.ekbana.net/";
+const baseURL = process.env.REACT_APP_BASE_URL;
 const apiKey = "q0eq7VRCxJBEW6n1EJkHy4qNLgaS86ztm8DYhGMqerV1eldXa6";
 const warehouseId = 1;
 

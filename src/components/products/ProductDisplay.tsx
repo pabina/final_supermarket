@@ -10,7 +10,7 @@ import Sort from "./Sort";
 import ReactPaginate from "react-paginate";
 import Categories from "../Category/Categories";
 
-const baseURL = "https://uat.ordering-dalle.ekbana.net/";
+const baseURL = process.env.REACT_APP_BASE_URL;
 const apiKey = "q0eq7VRCxJBEW6n1EJkHy4qNLgaS86ztm8DYhGMqerV1eldXa6";
 const warehouseId = 1;
 

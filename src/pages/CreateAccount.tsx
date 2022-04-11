@@ -1,4 +1,3 @@
-// import { useRef, useState } from "react";
 import React from "react";
 import BreadcrumbComponent from "../components/BreadcrumbComponent";
 import Footer from "../components/Footer";

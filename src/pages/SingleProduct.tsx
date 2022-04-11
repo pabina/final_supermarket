@@ -9,8 +9,7 @@ import BreadcrumbComponent from "../components/BreadcrumbComponent";
 import Footer from "../components/Footer";
 import { Meta, Daum } from "../components/Interface/ProductInterface";
 
-// import { Meta, Daum } from "../components/products/ProductDisplayInterface";
-const baseURL = "https://uat.ordering-dalle.ekbana.net/";
+const baseURL = process.env.REACT_APP_BASE_URL;
 const apiKey = "q0eq7VRCxJBEW6n1EJkHy4qNLgaS86ztm8DYhGMqerV1eldXa6";
 const warehouseId = 1;
 

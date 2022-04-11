@@ -39,7 +39,7 @@ function Registration(): JSX.Element {
         return;
       }
 
-      let res = await axios.post(signupURL, {
+      let response = await axios.post(signupURL, {
         last_name: lastName.current?.value,
         email: email.current?.value,
         password: password.current?.value,
@@ -47,7 +47,7 @@ function Registration(): JSX.Element {
         first_name: firstName.current?.value,
       });
 
-      console.log(res);
+      console.log(response);
     } catch (error: any) {
       console.log(error);
       console.log(error.response);
@@ -76,7 +76,7 @@ function Registration(): JSX.Element {
             <form>
               <input
                 type="email"
-                placeholder="Email Address"
+                placeholder="Email Addresponses"
                 required
                 ref={email}
               />
